@@ -49,3 +49,27 @@ const getProductsList = async () => {
 };
 
 getProductsList();
+
+function slideshow (){
+setTimeout(() => {
+  document.querySelector(".overlay").className= "overlayDue"
+
+setTimeout(() => {
+  document.querySelector(".overlayDue").className= "overlayTre"
+
+setTimeout(() => {
+  document.querySelector(".overlayTre").className= "overlay"
+},3000);
+},3000);
+},3000);
+};
+
+window.onload = setInterval(function(){slideshow();}, 9000);
+
+
+
+
+
+
+
+

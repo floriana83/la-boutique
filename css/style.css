@@ -48,6 +48,32 @@ strong {
   filter: contrast(1.4) sepia(0.2);
 }
 
+.overlayDue {
+  position: absolute;
+  top: 0;
+  height: 350px;
+  width: 100%;
+
+  background-image: url("https://media.istockphoto.com/photos/close-up-crooped-shot-of-woman-hand-holding-many-paper-handbags-and-picture-id1285173056");
+  background-position-y: 35%;
+  background-size: cover;
+
+  filter: contrast(1.4) sepia(0.2);
+}
+
+.overlayTre {
+  position: absolute;
+  top: 0;
+  height: 350px;
+  width: 100%;
+
+  background-image: url("https://media.istockphoto.com/photos/young-woman-shopping-for-christmas-picture-id1282841267");
+  background-position-y: 35%;
+  background-size: cover;
+
+  filter: contrast(1.4) sepia(0.2);
+}
+
 .wrapper .__hero {
   position: relative;
   background: rgba(0, 0, 0, 0.335);
