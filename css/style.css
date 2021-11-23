@@ -1,10 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Mohave:wght@400;700&family=Press+Start+2P&display=swap");
 :root {
-  --main_color: #1396ab;
+  --main_color: #353535;
 }
 
 body {
   font-family: "Mohave", sans-serif;
+  margin: 0;
+  border: 0;
 }
 
 h4 {
@@ -27,9 +29,45 @@ strong {
 }
 
 .wrapper {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  height: 350px;
+  width: 100%;
+
+  background-image: url("https://media.istockphoto.com/photos/fits-perfect-picture-id938463764");
+  background-position-y: 35%;
+  background-size: cover;
+
+  filter: contrast(1.4) sepia(0.2);
+}
+
+.wrapper .__hero {
+  position: relative;
+  background: rgba(0, 0, 0, 0.335);
+  top: 0;
+  height: 350px;
+  width: 100%;
+  z-index: 2;
+}
+
+.wrapper .__hero .intestazione {
+  position: absolute;
+  padding: 30px;
+  height: 100%;
+  color: whitesmoke;
+  font-size: 1.5rem;
+  z-index: 3;
+}
+
+.wrapper .__hero .intestazione h2 {
+  margin-bottom: 0;
 }
 
 .wrapper__titles {
@@ -46,10 +84,9 @@ strong {
 }
 
 .wrapper__products {
-  margin: 0 40px;
-  height: 38vh;
+  margin: 20px 40px;
   display: flex;
-  overflow-y: hidden;
+  flex-wrap: wrap;
 }
 
 .product {
@@ -60,10 +97,9 @@ strong {
   margin: 7.5px;
   padding: 10px;
 
-  min-width: 150px;
+  width: 150px;
 
   border: 2px solid rgb(50, 50, 50);
-  border-radius: 12px;
 
   opacity: 0.78;
   cursor: pointer;
@@ -81,5 +117,5 @@ strong {
 }
 
 .product p {
-  align-self: flex-start;
+  align-self: flex-end;
 }
