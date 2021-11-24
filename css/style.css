@@ -172,3 +172,33 @@ strong {
 .product p {
   align-self: flex-end;
 }
+
+.modal {
+position: fixed;
+width: 500px;
+height: 150px;
+color: white;
+z-index: 3;
+left:40%;
+top:-500px;
+transform: translate(-50% -50%);
+transition: all 0.35s;
+opacity: 2;
+background-image: linear-gradient(135deg, #f6416c 10%, #fff6b7 100%);
+border-radius: 10px;
+line-height: 100px;
+text-align: center;
+
+}
+
+p{
+  color: black;
+  font-weight: bold;
+  font-size: large;
+ 
+}
+.modal2 {
+  top:50%;
+
+}
+
