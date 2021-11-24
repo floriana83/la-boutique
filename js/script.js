@@ -1,10 +1,29 @@
-function createProduct(parent, imgUrl, productTitle, textPrice) {
+// import { products } from "./products";
+
+function setCartProductsNum() {
+  cartProductsNum.textContent = `Numero prodotti: ${cartList.length}`;
+}
+
+function createProduct(parent, imgUrl, productTitle, textPrice, idProduct) {
   const product = document.createElement("div");
   product.className = "product";
+  product.setAttribute("id", idProduct);
 
   createImg(product, imgUrl, productTitle);
   createText(product, productTitle, textPrice);
   parent.appendChild(product);
+
+  product.addEventListener("click", (e) => {
+    cartList.push(
+      productsList.find(
+        (product) => parseInt(e.currentTarget.id) === product.id
+      )
+    );
+    setCartProductsNum();
+    alert(`Prodotto aggiunto al carrello, numero prodotti: ${cartList.length}`);
+    // Nel caso in cui volessimo aggiungere una interazione col LocalStorage
+    localStorage.setItem("totCartitems", cartList.length);
+  });
 }
 
 function createImg(parent, imgUrl, productTitle) {
@@ -25,18 +44,15 @@ function createText(parent, productTitle, textPrice) {
   parent.append(title, price);
 }
 
-// fetch("https://fakestoreapi.com/products") // <== importare la lista prodotti in modo remoto
-//   .then((response) => response.json())
-//   .then((data) => {
-//     products = data;
-//     renderProducts();
-//   });
-
-const wrapperProducts = document.querySelector(".wrapper__products");
-
 function renderProducts(listItems) {
   listItems.map((product) => {
-    createProduct(wrapperProducts, product.image, product.title, product.price);
+    createProduct(
+      wrapperProducts,
+      product.image,
+      product.title,
+      product.price,
+      product.id
+    );
   });
 }
 
@@ -44,11 +60,38 @@ function renderProducts(listItems) {
 const getProductsList = async () => {
   const res = await fetch("https://fakestoreapi.com/products");
   const data = await res.json();
+  productsList = data;
+
+  // Nella eventualità di aggiungere una quantità per prodotto
+  // productsList = data.map((product) => {
+  //   product.quantity = 0;
+  //   return product;
+  // });
 
   return renderProducts(data);
 };
 
+let productsList = [];
+const wrapperProducts = document.querySelector(".wrapper__products");
+
+// Parte inerente alla logica del carrello
+let cartList = [];
+
+const localStorageTot = localStorage.getItem("totCartitems");
+const cartBtn = document.querySelector(".cartBtn");
+const cartProductsNum = document.querySelector(".cartProductsNum");
+const clearCartBtn = document.querySelector(".clearCart");
+
+// Flusso generale
+cartProductsNum.textContent = `Numero prodotti: ${localStorageTot}`;
 getProductsList();
+
+clearCartBtn.addEventListener("click", () => {
+  cartList.length = 0;
+  setCartProductsNum();
+});
+
+// funzione slideshow Hero
 
 function slideshow (){
 setTimeout(() => {
@@ -65,6 +108,9 @@ setTimeout(() => {
 };
 
 window.onload = setInterval(function(){slideshow();}, 9000);
+
+
+
 
 
 
