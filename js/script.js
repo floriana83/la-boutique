@@ -77,17 +77,24 @@ const wrapperProducts = document.querySelector(".wrapper__products");
 // Parte inerente alla logica del carrello
 let cartList = [];
 
-const localStorageTot = localStorage.getItem("totCartitems");
+let localStorageTot = localStorage.getItem("totCartitems");
 const cartBtn = document.querySelector(".cartBtn");
 const cartProductsNum = document.querySelector(".cartProductsNum");
 const clearCartBtn = document.querySelector(".clearCart");
 
 // Flusso generale
+if (localStorageTot === null) {
+  localStorageTot = 0
+};
 cartProductsNum.textContent = `Numero prodotti: ${localStorageTot}`;
+
+
+
 getProductsList();
 
 clearCartBtn.addEventListener("click", () => {
   cartList.length = 0;
+  localStorage.removeItem("totCartitems", cartList.length);
   setCartProductsNum();
 });
 
