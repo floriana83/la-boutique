@@ -1,5 +1,6 @@
 // import { products } from "./products";
 
+
 function setCartProductsNum() {
   cartProductsNum.textContent = `Numero prodotti: ${cartList.length}`;
 }
@@ -14,15 +15,20 @@ function createProduct(parent, imgUrl, productTitle, textPrice, idProduct) {
   parent.appendChild(product);
 
   product.addEventListener("click", (e) => {
+    const localStorageValue = localStorage.getItem("totCartitems");
+    if (localStorageValue) {
+      cartList = JSON.parse(localStorageValue);
+    }
+
     cartList.push(
       productsList.find(
         (product) => parseInt(e.currentTarget.id) === product.id
       )
     );
     setCartProductsNum();
-    // alert(`Prodotto aggiunto al carrello, numero prodotti: ${cartList.length}`);
+    alert(`Prodotto aggiunto al carrello, numero prodotti: ${cartList.length}`);
     // Nel caso in cui volessimo aggiungere una interazione col LocalStorage
-    
+
     const modal = document.querySelector(".modal");
     
     modal.classList.toggle("modal2");
@@ -32,14 +38,11 @@ function createProduct(parent, imgUrl, productTitle, textPrice, idProduct) {
     },1200)
 
 
-   
+    localStorage.setItem("totCartitems", JSON.stringify(cartList));
 
-    localStorage.setItem("totCartitems", cartList.length);
+    // console.log("LOCAL STORAGE ==>", localStorageValue);
   });
 }
-
-
-
 
 function createImg(parent, imgUrl, productTitle) {
   const image = document.createElement("img");
@@ -92,31 +95,24 @@ const wrapperProducts = document.querySelector(".wrapper__products");
 // Parte inerente alla logica del carrello
 let cartList = [];
 
-let localStorageTot = localStorage.getItem("totCartitems");
+const localStorageTot = localStorage.getItem("totCartitems");
 const cartBtn = document.querySelector(".cartBtn");
 const cartProductsNum = document.querySelector(".cartProductsNum");
 const clearCartBtn = document.querySelector(".clearCart");
 
-
-
-
-
-
 // Flusso generale
-if (localStorageTot === null) {
-  localStorageTot = 0
-};
-cartProductsNum.textContent = `Numero prodotti: ${localStorageTot}`;
+const parsedTotCardItemsLen =
+  JSON.parse(localStorage.getItem("totCartitems"))?.length || 0;
 
-
-
+cartProductsNum.textContent = `Numero prodotti: ${parsedTotCardItemsLen || 0}`;
 getProductsList();
 
 clearCartBtn.addEventListener("click", () => {
   cartList.length = 0;
-  localStorage.removeItem("totCartitems", cartList.length);
   setCartProductsNum();
 });
+
+
 
 // funzione slideshow Hero
 
