@@ -188,17 +188,29 @@ background-image: linear-gradient(135deg, #f6416c 10%, #fff6b7 100%);
 border-radius: 10px;
 line-height: 100px;
 text-align: center;
+color: black;
+font-weight: bold;
+font-size: large;
 
 }
 
-p{
-  color: black;
-  font-weight: bold;
-  font-size: large;
- 
-}
+
 .modal2 {
   top:50%;
 
 }
 
+
+
+.wrapper__reviews{
+  text-align: center;
+  background-image: linear-gradient(135deg, #f6416c 10%, #fff6b7 100%);
+  padding-top: 20px;
+  padding-bottom: 20px;
+
+}
+
+#text__review {
+  text-align: center;
+
+}

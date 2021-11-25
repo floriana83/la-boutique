@@ -26,7 +26,7 @@ function createProduct(parent, imgUrl, productTitle, textPrice, idProduct) {
       )
     );
     setCartProductsNum();
-    alert(`Prodotto aggiunto al carrello, numero prodotti: ${cartList.length}`);
+    // alert(`Prodotto aggiunto al carrello, numero prodotti: ${cartList.length}`);
     // Nel caso in cui volessimo aggiungere una interazione col LocalStorage
 
     const modal = document.querySelector(".modal");
@@ -135,7 +135,21 @@ window.onload = setInterval(function(){slideshow();}, 9000);
 
 
 
+let reviews = new Array();
+reviews[0] = "Il miglior ecommerce in circolazione!";
+reviews[1] ="Eccezionale! Tutto a portata di click!";
+reviews[2] = "Peccato non averlo scoperto prima";
+reviews[3] = "Ottimo rapporto qualità prezzo! Consigliatissimo";
 
+let counter = 0;
+function loop() {
+  if (counter > 2) counter = 0;
+  document.getElementById("text__review").firstElementChild.innerHTML =
+    reviews[counter];
+  counter++;
+  setTimeout(loop, 2000);
+}
+loop();
 
 
 
