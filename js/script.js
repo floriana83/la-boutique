@@ -122,13 +122,13 @@ clearCartBtn.addEventListener("click", () => {
 
 function slideshow (){
 setTimeout(() => {
-  document.querySelector(".overlay").className= "overlayDue"
+  document.querySelector(".overlay").className="overlayDue"
 
 setTimeout(() => {
-  document.querySelector(".overlayDue").className= "overlayTre"
+  document.querySelector(".overlayDue").className="overlayTre"
 
 setTimeout(() => {
-  document.querySelector(".overlayTre").className= "overlay"
+  document.querySelector(".overlayTre").className="overlay"
 },3000);
 },3000);
 },3000);
