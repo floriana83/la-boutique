@@ -21,6 +21,7 @@ img {
 
 strong {
   font-weight: bold;
+
 }
 
 .cart {
@@ -33,6 +34,7 @@ strong {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  overflow-x: hidden;
 }
 
 .overlay {
@@ -136,10 +138,29 @@ strong {
   font-size: 0.9rem;
 }
 
+.showCartBtn {
+  margin: 20px 0;
+  padding: 10px 5px;
+  width: 150px;
+  align-self: center;
+
+  border: 0;
+  background-color: lightcoral;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.showCartBtn:hover {
+  background-color: lightpink;
+}
+
+
 .wrapper__products {
   margin: 20px 40px;
   display: flex;
   flex-wrap: wrap;
+  transition: all 1s;
 }
 
 .product {
@@ -171,6 +192,9 @@ strong {
 
 .product p {
   align-self: flex-end;
+}
+.sideViewAnim {
+  transform: translateX(120%);
 }
 
 .modal {
