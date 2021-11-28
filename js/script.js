@@ -90,6 +90,26 @@ function handleShowCartBtn() {
   }, 1000);
 }
 
+function handleFilterSearch() {
+
+  wrapperProducts.classList.add("searchAnim");
+
+  document
+    .querySelectorAll(".product")
+    .forEach((product) => wrapperProducts.removeChild(product));
+
+    renderProducts(
+      productsList.filter((product) =>
+        product.title
+          .toLowerCase()
+          .includes(inputFilterSearch.value.toLowerCase())
+      )
+    );
+
+  setTimeout(() => {
+    wrapperProducts.classList.remove("searchAnim");
+  }, 1000);
+}
 
 // Async await
 const getProductsList = async () => {
@@ -117,6 +137,8 @@ const cartBtn = document.querySelector(".cartBtn");
 const cartProductsNum = document.querySelector(".cartProductsNum");
 const clearCartBtn = document.querySelector(".clearCart");
 const showCartBtn = document.querySelector(".showCartBtn");
+const searchBtn = document.querySelector(".searchBtn");
+const inputFilterSearch = document.querySelector(".inputFilterSearch");
 
 // Flusso generale
 const parsedTotCardItemsLen =
@@ -132,6 +154,8 @@ clearCartBtn.addEventListener("click", () => {
 });
 
 showCartBtn.addEventListener("click", handleShowCartBtn);
+
+searchBtn.addEventListener("click", handleFilterSearch);
 
 // funzione slideshow Hero
 
